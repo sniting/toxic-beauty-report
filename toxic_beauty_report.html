@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toxic Beauty: Unveiling Hidden Dangers</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Custom styles */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        .nav-active {
+            font-weight: bold;
+            color: #ec4899; /* Pink */
+        }
+        section {
+            padding-top: 70px; /* Increased padding for taller sticky header */
+            margin-top: -70px;
+        }
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .section-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .chart-container {
+            position: relative;
+            height: 45vh; /* Slightly taller chart containers */
+            width: 100%;
+            max-width: 800px;
+            margin: 1rem auto; /* Added vertical margin */
+        }
+        /* Style for images within sections */
+        .content-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 0.5rem; /* rounded-lg */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-md */
+            margin: 1rem auto; /* Center images and add space */
+            display: block; /* Ensure block display for centering */
+        }
+        figcaption {
+            text-align: center;
+            font-size: 0.875rem; /* text-sm */
+            color: #6b7280; /* text-gray-500 */
+            margin-top: 0.5rem; /* mt-2 */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800"> <header class="bg-white shadow-md sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center"> <div class="text-xl md:text-2xl font-bold text-pink-600">Toxic Beauty Project</div>
+            <div class="hidden md:flex space-x-4" id="nav-links">
+                <a href="#intro" class="text-gray-600 hover:text-pink-500 px-3 py-2 rounded-md text-sm font-medium">Introduction</a>
+                <a href="#problem" class="text-gray-600 hover:text-pink-500 px-3 py-2 rounded-md text-sm font-medium">Problem</a>
+                <a href="#objectives" class="text-gray-600 hover:text-pink-500 px-3 py-2 rounded-md text-sm font-medium">Objectives</a>
+                <a href="#data" class="text-gray-600 hover:text-pink-500 px-3 py-2 rounded-md text-sm font-medium">Data</a>
+                <a href="#findings" class="text-gray-600 hover:text-pink-500 px-3 py-2 rounded-md text-sm font-medium">Findings</a>
+                <a href="#recommendations" class="text-gray-600 hover:text-pink-500 px-3 py-2 rounded-md text-sm font-medium">Recommendations</a>
+            </div>
+            <button id="mobile-menu-button" class="md:hidden text-gray-600 hover:text-pink-500 focus:outline-none">
+                <i class="fas fa-bars fa-lg"></i>
+            </button>
+        </nav>
+        <div id="mobile-menu" class="md:hidden hidden bg-white py-2 border-t border-gray-200">
+            <a href="#intro" class="block text-gray-600 hover:bg-pink-100 px-4 py-2 text-sm">Introduction</a>
+            <a href="#problem" class="block text-gray-600 hover:bg-pink-100 px-4 py-2 text-sm">Problem</a>
+            <a href="#objectives" class="block text-gray-600 hover:bg-pink-100 px-4 py-2 text-sm">Objectives</a>
+            <a href="#data" class="block text-gray-600 hover:bg-pink-100 px-4 py-2 text-sm">Data</a>
+            <a href="#findings" class="block text-gray-600 hover:bg-pink-100 px-4 py-2 text-sm">Findings</a>
+            <a href="#recommendations" class="block text-gray-600 hover:bg-pink-100 px-4 py-2 text-sm">Recommendations</a>
+        </div>
+    </header>
+
+    <main class="container mx-auto px-4 md:px-6 py-8">
+
+        <section id="intro" class="mb-16 bg-white p-6 md:p-8 rounded-lg shadow-lg section-fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-pink-600 mb-6">Introduction: The Allure and the Alarm</h2>
+            <div class="flex flex-col lg:flex-row items-center gap-8">
+                <div class="lg:w-2/3">
+                    <p class="mb-4 text-lg">The global cosmetics industry is a multi-billion dollar powerhouse, reflecting a universal desire for self-expression and care. In 2024 alone, it generated an estimated <strong class="text-pink-700">$548 billion</strong> in revenue, with <strong class="text-pink-700">Skincare</strong> emerging as the largest and fastest-growing category.</p>
+                    <p class="mb-4">However, beneath the glossy packaging and appealing marketing, a critical concern persists: the widespread use of potentially <strong class="text-red-600">toxic chemicals</strong> in products applied daily to our skin, hair, and nails.</p>
+                    <p class="mb-4">This project, "Toxic Beauty," aims to lift the veil on these hidden dangers. By analyzing extensive data, we seek to provide clarity and empower consumers, regulators, and the industry itself to prioritize safety.</p>
+                </div>
+                <div class="lg:w-1/3 mt-4 lg:mt-0">
+                    <figure>
+                         <img src="https://storage.googleapis.com/generativeai-downloads/images/d9f93e010384a1f1/toxic_beauty_webpage_image_1.png" alt="Close up of makeup brushes applying powder to skin" class="content-image" onerror="this.src='https://placehold.co/400x300/fbcfe8/ec4899?text=Cosmetics+Application'; this.alt='Placeholder image for cosmetics application'">
+                         <figcaption>The allure of cosmetics meets concerns about ingredient safety.</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <section id="problem" class="mb-16 bg-white p-6 md:p-8 rounded-lg shadow-lg section-fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-pink-600 mb-6">The Problem: Beauty's Toxic Secret</h2>
+            <p class="mb-4 text-lg">The beauty and skincare industry is flourishing, yet this growth often masks a significant issue. Many everyday products – from makeup to lotions to hair dyes – contain chemicals that have been linked through scientific research to adverse health effects. These concerns include:</p>
+            <ul class="list-disc list-inside mb-6 space-y-2 text-red-700 pl-4">
+                <li><strong class="text-red-800">Hormonal Disruption:</strong> Interference with the body's endocrine system, potentially impacting development and reproduction.</li>
+                <li><strong class="text-red-800">Allergies & Sensitization:</strong> Triggering skin reactions, irritation, and long-term sensitivities.</li>
+                <li><strong class="text-red-800">Carcinogenicity:</strong> Potential links to increased cancer risk based on specific chemical classifications (e.g., by IARC, Prop 65).</li>
+            </ul>
+            <p class="mb-4">While consumer awareness about ingredient safety is rising, navigating the complex world of chemical names and potential risks remains challenging. There's a clear need for accessible, data-driven analysis to help evaluate product safety beyond marketing claims.</p>
+            <p>This project directly addresses this gap by using real-world data to investigate the prevalence and patterns of hazardous chemicals in cosmetics.</p>
+        </section>
+
+        <section id="objectives" class="mb-16 bg-white p-6 md:p-8 rounded-lg shadow-lg section-fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-pink-600 mb-6">Project Objectives</h2>
+            <p class="mb-6 text-lg">Our investigation was guided by four key objectives:</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="bg-pink-50 p-5 rounded-lg border border-pink-200 transition-transform transform hover:scale-105">
+                    <h3 class="font-semibold text-xl mb-2 text-pink-700"><i class="fas fa-search mr-2"></i>1. Identify High-Focus Categories & Chemical Landscape</h3>
+                    <p>To pinpoint which product categories (e.g., makeup, skincare) have the highest volume of reported chemical exposures. We also aimed to evaluate the potential health effects by developing and applying a <strong class="text-pink-800">toxicity scoring system</strong> at the ingredient level.</p>
+                </div>
+                <div class="bg-pink-50 p-5 rounded-lg border border-pink-200 transition-transform transform hover:scale-105">
+                    <h3 class="font-semibold text-xl mb-2 text-pink-700"><i class="fas fa-chart-bar mr-2"></i>2. Analyze Brand Behavior in Key Categories</h3>
+                    <p>To understand how different brands operate within the most reported product categories. This involved analyzing <strong class="text-pink-800">brand-specific report volumes and average hazard scores</strong> using visualizations like bar charts.</p>
+                </div>
+                <div class="bg-pink-50 p-5 rounded-lg border border-pink-200 transition-transform transform hover:scale-105">
+                    <h3 class="font-semibold text-xl mb-2 text-pink-700"><i class="fas fa-vial-virus mr-2"></i>3. Investigate Co-occurrence of Hazardous Chemicals</h3>
+                    <p>To identify products containing <strong class="text-pink-800">multiple hazardous chemicals</strong> simultaneously and determine the subcategories where such co-occurrences are most common. This was explored using bar charts and heatmap concepts.</p>
+                </div>
+                <div class="bg-pink-50 p-5 rounded-lg border border-pink-200 transition-transform transform hover:scale-105">
+                    <h3 class="font-semibold text-xl mb-2 text-pink-700"><i class="fas fa-calendar-alt mr-2"></i>4. Temporal Clustering of Discontinuations & Reporting</h3>
+                    <p>To examine whether spikes in public chemical reporting align temporally with waves of product discontinuations. We used <strong class="text-pink-800">dual-line charts</strong> comparing trends in 'Initial Date Reported' and 'Discontinued Date'.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="data" class="mb-16 bg-white p-6 md:p-8 rounded-lg shadow-lg section-fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-pink-600 mb-6">The Data: Insights from California's Safe Cosmetics Act</h2>
+             <div class="flex flex-col lg:flex-row gap-8">
+                <div class="lg:w-1/2">
+                    <h3 class="font-semibold text-xl mb-3 text-pink-700">Dataset Overview</h3>
+                    <ul class="list-disc list-inside space-y-2 mb-4">
+                        <li><strong>Source:</strong> Kaggle dataset "Toxic Beauty: Chemicals Exposed!" uploaded by Nafayun Noor.</li>
+                        <li><strong>Origin & Context:</strong> The data stems from California's landmark <strong class="text-pink-800">Safe Cosmetics Act (2005)</strong>, which mandates companies to report products containing ingredients known or suspected to cause cancer, birth defects, or other reproductive harm.</li>
+                        <li><strong>Reliability:</strong> Derived from public data (likely regulatory/industry reports mandated by the Act), offering detailed chemical composition. Kaggle's platform adds a layer of community validation.</li>
+                        <li><strong>Time Period:</strong> Spans over a decade, from <strong class="text-pink-800">July 2009 to June 2020</strong>, capturing significant trends.</li>
+                        <li><strong>Scope:</strong> Contains approximately <strong class="text-pink-800">114,635 entries</strong>.</li>
+                        <li><strong>Purpose:</strong> Primarily aimed at exposing potentially harmful chemicals in cosmetics sold in California, thereby increasing transparency for consumer safety and regulatory scrutiny.</li>
+                    </ul>
+                     <h3 class="font-semibold text-xl mb-3 text-pink-700">Key Attributes & Profiling Insights</h3>
+                     <p class="text-sm text-gray-600 mb-4">Core data fields include: <code class="text-xs bg-gray-200 p-1 rounded">ProductName</code>, <code class="text-xs bg-gray-200 p-1 rounded">CompanyName</code>, <code class="text-xs bg-gray-200 p-1 rounded">BrandName</code>, <code class="text-xs bg-gray-200 p-1 rounded">PrimaryCategory</code>, <code class="text-xs bg-gray-200 p-1 rounded">SubCategory</code>, <code class="text-xs bg-gray-200 p-1 rounded">ChemicalName</code>, <code class="text-xs bg-gray-200 p-1 rounded">CasNumber</code>, <code class="text-xs bg-gray-200 p-1 rounded">InitialDateReported</code>, <code class="text-xs bg-gray-200 p-1 rounded">MostRecentDateReported</code>, <code class="text-xs bg-gray-200 p-1 rounded">DiscontinuedDate</code>, <code class="text-xs bg-gray-200 p-1 rounded">ChemicalCount</code>.</p>
+                     <p class="mb-2"><strong>Profiling revealed:</strong> A vast diversity of products (33k+ unique names) and brands (2.7k+), yet concentration among fewer manufacturers (600+ companies). Products are well-categorized (13 primary, 89 subcategories). Most products report only one tracked chemical (mean ChemicalCount ~1.29), but some contain multiple.</p>
+                     <figure class="mt-4">
+                         <img src="https://storage.googleapis.com/generativeai-downloads/images/84f4662a3813c52e/toxic_beauty_webpage_image_2.png" alt="Bar chart showing distribution of primary product categories" class="content-image max-w-lg" onerror="this.src='https://placehold.co/600x200/fbcfe8/ec4899?text=Category+Distribution'; this.alt='Placeholder image for category distribution chart'">
+                         <figcaption>Makeup products dominate chemical reporting volume.</figcaption>
+                    </figure>
+                </div>
+                <div class="lg:w-1/2 bg-gray-100 p-5 rounded-lg border border-gray-200">
+                     <h3 class="font-semibold text-xl mb-3 text-gray-700">Data Cleaning & Feature Engineering</h3>
+                     <p class="mb-3">To ensure data quality and prepare for analysis, we performed several steps:</p>
+                     <ul class="list-disc list-inside space-y-2 text-sm mb-4">
+                         <li><strong>Missing Values:</strong> Most columns had minimal missing data. Columns like `CSF`/`CSFID` were less critical. `DiscontinuedDate` missing values were handled by creating a status column. Crucially, rows missing `CasNumber` (chemical identifier) after attempting imputation were dropped (~4.5k rows) to maintain analysis integrity.</li>
+                         <li><strong>Brand Name Cleaning:</strong> Rows with missing `BrandName` were removed. Similar brand names (e.g., "L'Oreal" vs "L'Oreal Paris") were consolidated using string similarity (>95%) to avoid redundancy.</li>
+                         <li><strong>Data Types:</strong> Ensured all attributes (dates, numbers, text) were cast to appropriate types.</li>
+                         <li><strong>Status Column:</strong> Created `DiscontinuedStatus` ('Active'/'Discontinued') based on `DiscontinuedDate` presence.</li>
+                         <li><strong>Chemical Count Recalculation:</strong> The `ChemicalCount` was recalculated per unique product ID (`CDPHId`) to accurately reflect the number of *unique* reported chemicals per product.</li>
+                     </ul>
+                     <h4 class="font-semibold text-lg mb-2 text-gray-700">Feature Engineering: Hazard Scoring</h4>
+                     <p class="text-sm mb-2">A key step was adding quantitative risk context:</p>
+                     <ul class="list-disc list-inside space-y-1 text-sm">
+                        <li>Created <strong class="text-gray-800">"Hazard Score" (1-10, higher=worse)</strong> and <strong class="text-gray-800">"Hazard Level" (Low/Moderate/High)</strong> for the ~94 unique chemicals post-cleaning.</li>
+                        <li>Scores based on intrinsic toxicity, primarily using the <strong class="text-gray-800">EWG Skin Deep® database</strong>.</li>
+                        <li>Supplemented with data from other authoritative sources like <strong class="text-gray-800">IARC (cancer classification), California Prop 65 list, and EU/other regulatory bans/restrictions</strong>.</li>
+                     </ul>
+                     <figure class="mt-4">
+                         <img src="https://storage.googleapis.com/generativeai-downloads/images/5a21f13c051582c4/toxic_beauty_webpage_image_4.png" alt="Bar chart showing distribution of hazard scores assigned to chemicals" class="content-image max-w-md" onerror="this.src='https://placehold.co/500x150/e5e7eb/6b7280?text=Hazard+Score+Distribution'; this.alt='Placeholder image for hazard score distribution chart'">
+                         <figcaption>Distribution of calculated Hazard Scores across chemicals.</figcaption>
+                    </figure>
+                </div>
+             </div>
+        </section>
+
+        <section id="findings" class="mb-16 section-fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold text-pink-600 mb-8 text-center">Key Findings & Visualizations</h2>
+
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg mb-10">
+                <h3 class="text-2xl md:text-3xl font-semibold text-pink-700 mb-5"><i class="fas fa-microscope mr-2"></i>Finding 1: Makeup Dominates Chemical Reports, Led by Lip & Eye Products</h3>
+                <p class="mb-4">Our analysis confirmed that <strong class="text-pink-800">Makeup Products (non-permanent)</strong> are the primary category for reported chemicals, with over 75,000 reports, far exceeding Nail Products (~15k) and Skin Care (~7.7k).</p>
+                <figure class="my-5">
+                    <img src="https://storage.googleapis.com/generativeai-downloads/images/60f2a1c1255d227b/toxic_beauty_webpage_image_5.png" alt="Stacked bar chart showing makeup subcategories contributing to reports" class="content-image max-w-2xl" onerror="this.src='https://placehold.co/700x250/fbcfe8/ec4899?text=Makeup+Subcategory+Breakdown'; this.alt='Placeholder image for makeup subcategory breakdown chart'">
+                    <figcaption>Breakdown within Makeup: Lip Products, Eye Shadow, and Foundations lead.</figcaption>
+                </figure>
+                <p class="mb-4">Within makeup, the highest chemical presence is found in:
+                    <ul class="list-decimal list-inside ml-4 mb-4">
+                        <li><strong>Lip Products:</strong> Lipsticks, Liners, Pencils, Glosses (~15,100+ reports)</li>
+                        <li><strong>Eye Shadows</strong> (~13,700+ reports)</li>
+                        <li><strong>Foundations & Bases</strong> (~8,800+ reports)</li>
+                    </ul>
+                </p>
+                <p class="mb-2"><strong class="text-pink-800">Titanium Dioxide</strong> is overwhelmingly the most reported chemical (often used as a pigment/whitener), but its hazard score is low (1). However, several high-hazard chemicals are notable in makeup:</p>
+                 <div class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                    <h4 class="font-semibold text-red-800 mb-2">Notable High-Toxicity Chemicals Found in Makeup:</h4>
+                     <ul class="list-disc list-inside text-sm text-red-700 space-y-1">
+                         <li><strong>Retinol/Retinyl Esters (Score 9):</strong> Vitamin A derivatives. Concerns include potential for severe sunburn, skin irritation, and possibly UV-induced DNA damage if skin isn't protected. Risk increases significantly at higher concentrations (>0.3% OTC).</li>
+                         <li><strong>Benzophenone (Score 8):</strong> Used as a fragrance ingredient or UV absorber. Classified as a potential endocrine disruptor and possible human carcinogen (IARC Group 2B).</li>
+                         <li><strong>Cocamide Diethanolamine (Score 7):</strong> Foaming agent. Concerns about potential carcinogenicity, especially related to contamination during manufacturing.</li>
+                         <li><strong>Talc (Score 6 - depending on contamination):</strong> Common filler. Concerns primarily related to potential asbestos contamination, linked to respiratory issues and cancer.</li>
+                     </ul>
+                 </div>
+                 </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg mb-10">
+                <h3 class="text-2xl md:text-3xl font-semibold text-pink-700 mb-5"><i class="fas fa-tags mr-2"></i>Finding 2: Brand Landscape Shows Variation in Volume and Hazard</h3>
+                <p class="mb-4">Analyzing brand behavior within the high-volume 'Makeup Products' category revealed significant differences:</p>
+                 <div class="chart-container mb-5">
+                    <canvas id="brandChart"></canvas>
+                    <figcaption class="text-xs">Illustrative chart showing top brands by report volume. Hover for notes on hazard score.</figcaption>
+                </div>
+                <ul class="list-disc list-inside space-y-2">
+                    <li><strong>High Volume Leaders:</strong> <strong class="text-pink-800">Sephora</strong> (4,638 reports in makeup), <strong class="text-pink-800">bareMinerals</strong> (2,899), and <strong class="text-pink-800">NYX</strong> (2,741) submitted the most reports for makeup products in the dataset.</li>
+                    <li><strong>Higher Average Hazard Scores:</strong> Among the top 15 reporting brands, <strong class="text-red-700">NYX</strong> (Avg. Hazard Score: 4.85) and <strong class="text-red-700">Sally Hansen</strong> (Avg. Hazard Score: 4.26) showed notably higher average hazard scores per reported product, suggesting formulations potentially relying more on higher-scoring chemicals.</li>
+                    <li><strong>Lower Hazard Despite Volume:</strong> Conversely, some brands with high report volumes, like <strong class="text-green-700">Sephora</strong> (Avg. Hazard: ~1.6) and <strong class="text-green-700">L'Oréal</strong> (Avg. Hazard: ~1.02), maintained relatively low average hazard scores. This could indicate different formulation strategies or use of lower-risk reported ingredients.</li>
+                    <li><strong>Luxury vs. Mass Market:</strong> The presence of both luxury (e.g., Dior, Charlotte Tilbury) and mass-market (e.g., Revlon, CoverGirl) brands shows the issue spans price points, though hazard profiles vary.</li>
+                </ul>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg mb-10">
+                <h3 class="text-2xl md:text-3xl font-semibold text-pink-700 mb-5"><i class="fas fa-atom mr-2"></i>Finding 3: Hazardous Mixes Common in Eye Shadow, Foundations, Lip Gloss</h3>
+                 <p class="mb-4">A critical finding is that many products contain <strong class="text-red-600">multiple reported chemicals (ChemicalCount ≥ 2)</strong> simultaneously, potentially leading to complex exposures. We identified the subcategories where this is most prevalent:</p>
+                 <figure class="my-5">
+                     <img src="https://storage.googleapis.com/generativeai-downloads/images/06131c7e348c0c7c/toxic_beauty_webpage_image_6.png" alt="Bar chart showing subcategories with the most products containing 2+ chemicals" class="content-image max-w-xl" onerror="this.src='https://placehold.co/650x300/fbcfe8/ec4899?text=Multi-Chemical+Subcategories'; this.alt='Placeholder image for multi-chemical subcategories chart'">
+                     <figcaption>Subcategories ranked by the number of unique products containing ≥2 reported chemicals.</figcaption>
+                 </figure>
+                 <p class="mb-4"><strong>High-Risk Subcategories for Multiple Chemicals:</strong>
+                    <ul class="list-decimal list-inside ml-4 mb-4">
+                        <li><strong>Eye Shadow:</strong> Stands out significantly with <strong class="text-red-700">over 575</strong> unique products containing two or more reported chemicals.</li>
+                        <li><strong>Foundations & Bases:</strong> ~273 products.</li>
+                        <li><strong>Lip Gloss/Shine:</strong> ~250 products.</li>
+                        <li>Other notable categories include Lipsticks, Face Powders, and Blushes.</li>
+                    </ul>
+                 </p>
+                 <div class="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg">
+                     <h4 class="font-semibold text-red-800 mb-2">Co-occurrence Intensity (Examples based on Heatmap Analysis):</h4>
+                     <p class="text-sm mb-2">Visualizing co-occurrence intensity (like with a heatmap) reveals combinations:</p>
+                     <ul class="list-disc list-inside text-sm text-red-700 space-y-1">
+                         <li>Products containing highly toxic <strong class="text-red-800">Toluene (Score 10)</strong> in <strong class="text-red-600">Lip Gloss</strong> or <strong class="text-red-600">Eye Shadow</strong> often contain an average of ~4 other reported chemicals.</li>
+                         <li>Foundations containing <strong class="text-red-800">Benzophenone-3 (Score 8)</strong> tend to co-occur with an average of ~3.7 other reported chemicals.</li>
+                         <li>This "cocktail effect" means exposure isn't just to one chemical but potentially several simultaneously, complicating risk assessment.</li>
+                     </ul>
+                 </div>
+                 </div>
+
+             <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg mb-10">
+                <h3 class="text-2xl md:text-3xl font-semibold text-pink-700 mb-5"><i class="fas fa-chart-line mr-2"></i>Finding 4: Reporting vs. Discontinuation - No Clear Temporal Link Found</h3>
+                <p class="mb-4">We investigated whether increased public reporting of chemicals in products led to subsequent waves of product discontinuations. The analysis compared trends over time (quarterly) for 'Initial Date Reported' vs. 'Discontinued Date'.</p>
+                <figure class="my-5">
+                    <img src="https://storage.googleapis.com/generativeai-downloads/images/26f43902119063d5/toxic_beauty_webpage_image_8.png" alt="Dual line charts showing product discontinuations vs initial reporting over time" class="content-image max-w-2xl" onerror="this.src='https://placehold.co/700x400/e0f2fe/0ea5e9?text=Temporal+Trends+Chart'; this.alt='Placeholder image for temporal trends chart'">
+                    <figcaption>Comparison of discontinuation dates (top) and initial reporting dates (bottom) over time.</figcaption>
+                </figure>
+                <div class="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+                    <h4 class="font-semibold text-blue-800 mb-2"><i class="fas fa-info-circle mr-1"></i>Key Observation:</h4>
+                    <p class="text-gray-700 mb-2">Despite fluctuations in both reporting and discontinuations, <strong class="text-blue-700">no consistent correlation</strong> was observed. For example, a significant spike in discontinuations around 2013-2014 did not clearly follow a corresponding spike in initial product reporting in the preceding quarters.</p>
+                    <p class="text-sm text-gray-600"><strong>Interpretation:</strong> This suggests that product discontinuation decisions are likely complex and influenced by a multitude of factors beyond just the public reporting requirements of the Safe Cosmetics Act. These factors could include internal brand strategies, ingredient availability, reformulation efforts, market trends, consumer feedback, or separate regulatory actions not captured in this specific reporting data.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="recommendations" class="mb-12 bg-gradient-to-r from-pink-500 to-purple-600 text-white p-8 md:p-10 rounded-lg shadow-xl section-fade-in">
+            <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center">Recommendations for Consumers</h2>
+            <p class="text-center text-lg mb-8 max-w-3xl mx-auto">Based on our findings, here are practical steps consumers can take to navigate the cosmetics landscape more safely:</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-center">
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                    <i class="fas fa-eye text-5xl text-pink-500 mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-3">Be Aware of High-Risk Products</h3>
+                    <p class="text-sm">Exercise extra caution with makeup categories shown to have higher chemical reporting and co-occurrence rates: <strong class="text-pink-700">lipsticks, eye shadows, foundations, and lip glosses</strong>. Consider frequency of use and application area.</p>
+                </div>
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                     <i class="fas fa-list-check text-5xl text-purple-500 mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-3">Scrutinize Ingredient Labels</h3>
+                    <p class="text-sm">Become familiar with and look out for high-hazard ingredients identified in our analysis (e.g., <strong class="text-red-700">Toluene, BHA, high-concentration Retinoids, Benzophenone, certain Talc sources</strong>), especially in products used daily or over large skin areas. Use resources like EWG's Skin Deep® database to check specific ingredients.</p>
+                </div>
+                <div class="bg-white text-gray-800 p-6 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300">
+                     <i class="fas fa-store text-5xl text-pink-500 mb-4"></i>
+                    <h3 class="font-semibold text-xl mb-3">Prefer Transparent Brands</h3>
+                    <p class="text-sm">Support companies that practice ingredient transparency by fully disclosing all components. Look for brands actively marketing <strong class="text-green-700">"clean," "non-toxic," or "free-from"</strong> formulations, but always verify claims by checking the actual ingredient list.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center text-gray-500 text-sm mt-16 pb-6">
+            <p>Project by Ntin & Sathvika | Group 5</p>
+            <p>Data Source: Kaggle "Toxic Beauty: Chemicals Exposed!" by Nafayun Noor</p>
+            <p>Based on California Safe Cosmetics Act Data (2009-2020)</p>
+        </footer>
+
+    </main>
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        // Close mobile menu when a link is clicked
+        mobileMenu.addEventListener('click', (event) => {
+            if (event.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+
+        // --- Intersection Observer for Section Animations ---
+        const sections = document.querySelectorAll('.section-fade-in');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1 // 10% visible
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('section-visible');
+                } else {
+                     entry.target.classList.remove('section-visible'); // Re-animate if scrolled out and back in
+                }
+            });
+        }, observerOptions);
+
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+
+        // --- Active Nav Link Highlighting on Scroll (Scrollspy) ---
+        const navLinks = document.querySelectorAll('#nav-links a, #mobile-menu a');
+        const contentSections = document.querySelectorAll('main section[id]');
+        const headerOffset = 70; // Match section padding-top
+
+        window.addEventListener('scroll', () => {
+            let currentSectionId = '';
+            const scrollPosition = pageYOffset + headerOffset + 10; // Add buffer
+
+            contentSections.forEach(section => {
+                if (scrollPosition >= section.offsetTop) {
+                     currentSectionId = section.getAttribute('id');
+                }
+            });
+
+             // Special case for reaching the bottom
+             if ((window.innerHeight + window.pageYOffset) >= document.body.offsetHeight - 50) { // Check if near bottom
+                 const lastSection = contentSections[contentSections.length - 1];
+                 if (lastSection) currentSectionId = lastSection.id;
+             }
+
+
+            navLinks.forEach(link => {
+                link.classList.remove('nav-active');
+                // Check if the link's href matches the current section ID
+                // Handle cases where href might be null or undefined defensively
+                const linkHref = link.getAttribute('href');
+                if (linkHref && linkHref === `#${currentSectionId}`) {
+                    link.classList.add('nav-active');
+                }
+            });
+        });
+
+         // --- Chart.js Visualizations ---
+         // Keeping charts illustrative as raw data isn't processed here.
+         // Data points are simplified representations based on presentation findings.
+
+         // Chart context checks
+         const ctxCategory = document.getElementById('categoryChart')?.getContext('2d');
+         const ctxBrand = document.getElementById('brandChart')?.getContext('2d');
+         const ctxCoOccurrence = document.getElementById('coOccurrenceChart')?.getContext('2d');
+
+         // 1. Category Chart (Finding 1 - Now represented by static image, JS chart commented out)
+         /* if (ctxCategory) {
+             new Chart(ctxCategory, {
+                 type: 'bar',
+                 data: { // ... data as before ... },
+                 options: { // ... options as before ... }
+             });
+         } */
+
+        // 2. Brand Chart (Finding 2 - Illustrative)
+        if (ctxBrand) {
+            new Chart(ctxBrand, {
+                type: 'bar',
+                data: {
+                    labels: ['Sephora', 'bareMinerals', 'NYX', 'Tarte', 'Revlon', 'NARS', 'MAKE UP FOR EVER', 'Sally Hansen', 'Other Top Brands'], // Added Sally Hansen
+                    datasets: [{
+                        label: 'Total Reports in Makeup (Illustrative)',
+                        data: [4638, 2899, 2741, 2209, 2095, 1960, 1709, 454, 10000], // Added SH, adjusted relative scales
+                        backgroundColor: [
+                            'rgba(168, 85, 247, 0.6)', // Purple
+                            'rgba(168, 85, 247, 0.6)',
+                            'rgba(219, 39, 119, 0.6)', // Pink (Highlight NYX)
+                            'rgba(168, 85, 247, 0.6)',
+                            'rgba(168, 85, 247, 0.6)',
+                            'rgba(168, 85, 247, 0.6)',
+                            'rgba(168, 85, 247, 0.6)',
+                            'rgba(219, 39, 119, 0.6)', // Pink (Highlight Sally Hansen)
+                            'rgba(107, 114, 128, 0.6)' // Gray
+                        ],
+                        borderColor: 'rgba(107, 70, 193, 1)', // Darker Purple border
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: { display: true, text: 'Top Brands by Report Count in Makeup (Illustrative)' },
+                        legend: { display: false },
+                        tooltip: {
+                            callbacks: {
+                                footer: function(tooltipItems) {
+                                    const brand = tooltipItems[0].label;
+                                    if (brand === 'NYX') return 'Note: Higher Avg. Hazard Score (~4.85)';
+                                    if (brand === 'Sally Hansen') return 'Note: Higher Avg. Hazard Score (~4.26)';
+                                    if (brand === 'Sephora') return 'Note: Lower Avg. Hazard Score (~1.6)';
+                                    if (brand === 'L\'Oréal') return 'Note: Lower Avg. Hazard Score (~1.02)'; // Assuming L'Oreal is in 'Other'
+                                    return '';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: { beginAtZero: true, title: { display: true, text: 'Approx. Report Count' } },
+                        x: { title: { display: true, text: 'Brand Name' } }
+                    }
+                }
+            });
+        }
+
+        // 3. Co-occurrence Chart (Finding 3 - Now represented by static image, JS chart commented out)
+        /* if (ctxCoOccurrence) {
+             new Chart(ctxCoOccurrence, {
+                 type: 'bar',
+                 data: { // ... data as before ... },
+                 options: { // ... options as before ... }
+             });
+         } */
+
+    </script>
+
+</body>
+</html>
